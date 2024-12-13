@@ -23,6 +23,8 @@ public class Menu {
                     case 2:
                         System.out.println("Place for quiz");
                         break;
+                    case 3:
+                        System.out.println("Random title generator");
                     case 0:
                         System.out.println("See you next time!");
                         break;
@@ -77,6 +79,7 @@ public class Menu {
                 "Choose one of the below options: \n" +
                 "1.Movies titles \n" +
                 "2.Have some fun - take a movie knowledge Quiz! \n" +
+                "3.Choose random title for today \n" +
                 "3.Quit - press 0");
 
     }
