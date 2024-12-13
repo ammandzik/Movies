@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "title": "Shark",
+    "category": "Thriller",
+    "releaseDate": "2005",
+    "rating": "5"
+  },
+  {
+    "id": "2",
+    "title": "Papirus",
+    "category": "Cartoons",
+    "releaseDate": "2010",
+    "rating": "8"
+  }
+]

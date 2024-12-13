@@ -8,7 +8,7 @@ class Movie {
     private Long id;
     private String title;
     private Category category;
-    private LocalDate releaseDate;
+    private Integer releaseDate;
     private double rating;
 
     Long getId() {
@@ -35,11 +35,11 @@ class Movie {
         this.category = category;
     }
 
-    LocalDate getReleaseDate() {
+    Integer getReleaseDate() {
         return releaseDate;
     }
 
-    void setReleaseDate(LocalDate releaseDate) {
+    void setReleaseDate(Integer releaseDate) {
         this.releaseDate = releaseDate;
     }
 
