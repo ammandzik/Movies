@@ -80,7 +80,8 @@ public class Menu {
                 "1.Movies titles \n" +
                 "2.Have some fun - take a movie knowledge Quiz! \n" +
                 "3.Choose random title for today \n" +
-                "3.Quit - press 0");
+                "4.Search for movie title here \n" +
+                "5.Quit - press 0");
 
     }
 
