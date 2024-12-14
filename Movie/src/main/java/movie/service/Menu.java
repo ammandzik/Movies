@@ -3,10 +3,13 @@ package movie.service;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import static movie.service.MovieService.*;
+
 public class Menu {
 
     private static final Scanner scanner = new Scanner(System.in);
     private static int userChoice;
+    private final static String FILE_PATH = "src/main/resources/movies.json";
 
     public static void displayMenu() {
 
@@ -24,7 +27,7 @@ public class Menu {
                         System.out.println("Place for quiz");
                         break;
                     case 3:
-                        System.out.println("Random title generator");
+                        getRandomTitle(FILE_PATH);
                     case 0:
                         System.out.println("See you next time!");
                         break;
@@ -55,10 +58,10 @@ public class Menu {
                     displayCategoriesMenu();
                     break;
                 case 2:
-                    System.out.println("***Ratings");
+
                     break;
                 case 3:
-                    System.out.println("***Release date");
+
                     break;
                 case 0:
                     displayMenu();
@@ -83,13 +86,13 @@ public class Menu {
 
             switch (userChoice) {
                 case 1:
-                    System.out.println("Adventure");
+                    displayTitles(movieByCategory("Adventure", FILE_PATH));
                     break;
                 case 2:
-                    System.out.println("Thriller");
+                    displayTitles(movieByCategory("Thriller", FILE_PATH));
                     break;
                 case 3:
-                    System.out.println("Sci-fi");
+                    displayTitles(movieByCategory("Sci-Fi", FILE_PATH));
                     break;
                 case 0:
                     displaySubMenu();
@@ -126,7 +129,7 @@ public class Menu {
     private static void categoriesSubMenu() {
         System.out.println("1.Adventure \n" +
                 "2.Thriller \n" +
-                "3.Sci-fi \n" +
+                "3.Sci-Fi \n" +
                 "4.Previous page - press 0");
     }
 

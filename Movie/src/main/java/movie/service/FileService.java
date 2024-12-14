@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-class FileService {
+public class FileService {
 
     public static JSONArray convertFileToJson(String fileName) {
 

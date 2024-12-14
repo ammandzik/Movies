@@ -4,15 +4,17 @@ import movie.model.Movie;
 import org.json.simple.JSONArray;
 import org.junit.jupiter.api.Test;
 
+import static movie.service.FileService.convertFileToJson;
+import static movie.service.FileService.jsonFileToObjectList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FileServiceTest {
 
-    private final String FILE_PATH = "src/test/java/resources/test.json";
+    private final String FILE_PATH = "src/test/resources/test.json";
 
 
     @Test
-    public void convertFileToJsonTest() {
+    public void shouldConvertFileToJsonCorrectly() {
 
         //given
 
@@ -20,27 +22,27 @@ class FileServiceTest {
 
         //when
 
-        JSONArray jsonArray = FileService.convertFileToJson(test);
+        var jsonArray = assertDoesNotThrow(() -> convertFileToJson(test));
 
         //then
 
-        assertDoesNotThrow(() -> FileService.convertFileToJson(test));
+
         assertEquals(jsonArray.getClass(), JSONArray.class);
 
 
     }
 
     @Test
-    public void convertEmptyJsonTest() {
+    public void convertEmptyJsonTestShouldThrowException() {
 
         // given
 
-        final String EMPTY_FILE = "src/test/java/resources/empty.json";
+        final String EMPTY_FILE = "src/test/resources/empty.json";
 
 
         // when
 
-        var exception = assertThrows(RuntimeException.class, () -> FileService.convertFileToJson(EMPTY_FILE));
+        var exception = assertThrows(RuntimeException.class, () -> convertFileToJson(EMPTY_FILE));
 
         // then
 
@@ -49,7 +51,7 @@ class FileServiceTest {
     }
 
     @Test
-    public void jsonFileToObjectListTest() {
+    public void shouldProvideCorrectJsonFileConversionToObjectList() {
 
         // given
 
@@ -57,30 +59,26 @@ class FileServiceTest {
 
         // when
 
-        var objects = FileService.jsonFileToObjectList(test, Movie.class);
+        var objects = assertDoesNotThrow(() -> jsonFileToObjectList(test, Movie.class));
 
         // then
 
-        assertDoesNotThrow(() -> FileService.jsonFileToObjectList(test, Movie.class));
         assertNotNull(objects.get(0));
-
 
     }
 
     @Test
     public void jsonFileToObjectListShouldThrowIndexOutOfBoundsException() {
 
-        // given
-
-        String test = FILE_PATH;
 
         // when
 
-        var objects = FileService.jsonFileToObjectList(test, Movie.class);
+        var objects = jsonFileToObjectList(FILE_PATH, Movie.class);
+
 
         // then
 
-        assertThrows(IndexOutOfBoundsException.class, () -> objects.get(2));
+        assertThrows(IndexOutOfBoundsException.class, () -> objects.get(objects.size()));
 
 
     }
