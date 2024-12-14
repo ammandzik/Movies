@@ -58,10 +58,10 @@ public class Menu {
                     displayCategoriesMenu();
                     break;
                 case 2:
-
+                    displayTitles(movieByRating(FILE_PATH));
                     break;
                 case 3:
-
+                    displayTitles(movieByReleaseDate(FILE_PATH));
                     break;
                 case 0:
                     displayMenu();
