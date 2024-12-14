@@ -1,14 +1,13 @@
 package movie.model;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
-class Movie {
+public class Movie {
 
     private Long id;
     private String title;
     private Category category;
-    private LocalDate releaseDate;
+    private int releaseDate;
     private double rating;
 
     Long getId() {
@@ -19,7 +18,7 @@ class Movie {
         this.id = id;
     }
 
-    String getTitle() {
+    public String getTitle() {
         return title;
     }
 
@@ -27,7 +26,7 @@ class Movie {
         this.title = title;
     }
 
-    Category getCategory() {
+    public Category getCategory() {
         return category;
     }
 
@@ -35,15 +34,15 @@ class Movie {
         this.category = category;
     }
 
-    LocalDate getReleaseDate() {
+    public Integer getReleaseDate() {
         return releaseDate;
     }
 
-    void setReleaseDate(LocalDate releaseDate) {
+    void setReleaseDate(Integer releaseDate) {
         this.releaseDate = releaseDate;
     }
 
-    double getRating() {
+    public double getRating() {
         return rating;
     }
 

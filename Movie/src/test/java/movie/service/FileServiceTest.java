@@ -1,46 +1,89 @@
 package movie.service;
 
+import movie.model.Movie;
+import org.json.simple.JSONArray;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class FileServiceTest {
 
-    private final String FILE_PATH = "movies.json";
+    private final String FILE_PATH = "src/test/java/resources/test.json";
 
 
     @Test
-    public void readsFromFileCorrectly() {
+    public void convertFileToJsonTest() {
 
         //given
 
+        String test = FILE_PATH;
 
         //when
 
+        JSONArray jsonArray = FileService.convertFileToJson(test);
 
         //then
+
+        assertDoesNotThrow(() -> FileService.convertFileToJson(test));
+        assertEquals(jsonArray.getClass(), JSONArray.class);
 
 
     }
 
     @Test
-    public void readingFileMethodThrowsFileNotFoundException() {
+    public void convertEmptyJsonTest() {
 
-        //given
+        // given
 
-        final String NON_EXISTING_FILE = "bestMovies.json";
+        final String EMPTY_FILE = "src/test/java/resources/empty.json";
 
-        //when
 
-        var exception = assertThrows(FileNotFoundException.class, () -> FileService.readFromFile(NON_EXISTING_FILE));
+        // when
 
-        //then
+        var exception = assertThrows(RuntimeException.class, () -> FileService.convertFileToJson(EMPTY_FILE));
 
-        assertThat(exception.getMessage().equals("File does not exist."));
+        // then
+
+        assertEquals("Could not parse file.", exception.getMessage());
+
+    }
+
+    @Test
+    public void jsonFileToObjectListTest() {
+
+        // given
+
+        String test = FILE_PATH;
+
+        // when
+
+        var objects = FileService.jsonFileToObjectList(test, Movie.class);
+
+        // then
+
+        assertDoesNotThrow(() -> FileService.jsonFileToObjectList(test, Movie.class));
+        assertNotNull(objects.get(0));
 
 
     }
+
+    @Test
+    public void jsonFileToObjectListShouldThrowIndexOutOfBoundsException() {
+
+        // given
+
+        String test = FILE_PATH;
+
+        // when
+
+        var objects = FileService.jsonFileToObjectList(test, Movie.class);
+
+        // then
+
+        assertThrows(IndexOutOfBoundsException.class, () -> objects.get(2));
+
+
+    }
+
+
 }

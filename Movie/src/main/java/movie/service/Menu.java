@@ -52,7 +52,7 @@ public class Menu {
 
             switch (userChoice) {
                 case 1:
-                    System.out.println("***Categories");
+                    displayCategoriesMenu();
                     break;
                 case 2:
                     System.out.println("***Ratings");
@@ -73,6 +73,37 @@ public class Menu {
 
     }
 
+    private static void displayCategoriesMenu() {
+
+        do {
+
+            categoriesSubMenu();
+
+            userChoice = scanner.nextInt();
+
+            switch (userChoice) {
+                case 1:
+                    System.out.println("Adventure");
+                    break;
+                case 2:
+                    System.out.println("Thriller");
+                    break;
+                case 3:
+                    System.out.println("Sci-fi");
+                    break;
+                case 0:
+                    displaySubMenu();
+                    break;
+                default:
+                    System.out.println("Incorrect option has been chosen.");
+                    break;
+
+            }
+
+        } while (userChoice != 0);
+
+    }
+
     private static void entryMenu() {
 
         System.out.println("Welcome to our movies library! \n\n" +
@@ -80,7 +111,8 @@ public class Menu {
                 "1.Movies titles \n" +
                 "2.Have some fun - take a movie knowledge Quiz! \n" +
                 "3.Choose random title for today \n" +
-                "3.Quit - press 0");
+                "4.Search for movie title \n" +
+                "5.Quit - press 0");
 
     }
 
@@ -89,6 +121,13 @@ public class Menu {
                 "2.Movies by ratings \n" +
                 "3.Movies by release date \n" +
                 "4.Quit to main menu - press 0");
+    }
+
+    private static void categoriesSubMenu() {
+        System.out.println("1.Adventure \n" +
+                "2.Thriller \n" +
+                "3.Sci-fi \n" +
+                "4.Previous page - press 0");
     }
 
 
