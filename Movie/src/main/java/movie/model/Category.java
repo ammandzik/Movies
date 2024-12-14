@@ -8,13 +8,13 @@ enum Category {
 
     final String description;
 
-    public String getDescription() {
-
-        return description;
-    }
-
     Category(String description) {
 
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return description;
     }
 }

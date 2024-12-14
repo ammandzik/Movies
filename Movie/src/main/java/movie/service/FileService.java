@@ -1,6 +1,9 @@
 package movie.service;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -14,7 +17,8 @@ class FileService {
 
     public static JSONArray convertFileToJson(String fileName) {
 
-        JSONArray jsonArray = null;
+        JSONArray jsonArray;
+
         var jsonParser = new JSONParser();
 
         try {
@@ -38,18 +42,34 @@ class FileService {
         return jsonArray;
     }
 
-    public static <T> List<T> jsonFileToObjectList(String file) throws IndexOutOfBoundsException {
+    public static <T> List<T> jsonFileToObjectList(String file, Class<T> customClass) throws IndexOutOfBoundsException {
 
         var jsonArray = (JSONArray) convertFileToJson(file);
 
         List<T> objects = new ArrayList<>();
 
-        for (Object o : jsonArray) {
+        var objectMapper = new ObjectMapper();
 
-            objects.add((T) o);
+        objectMapper.configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, true);
+
+        try {
+
+            for (Object o : jsonArray) {
+
+                if (o instanceof JSONObject) {
+
+                    T obj = objectMapper.convertValue(o, customClass);
+                    objects.add(obj);
+                }
+
+            }
+
+        } catch (ClassCastException ex) {
+
+            throw new RuntimeException("Object of class JSONObject cannot be casted to custom class.");
         }
 
-        return jsonArray;
+        return objects;
 
     }
 

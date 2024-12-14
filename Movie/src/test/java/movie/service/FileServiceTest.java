@@ -1,5 +1,6 @@
 package movie.service;
 
+import movie.model.Movie;
 import org.json.simple.JSONArray;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class FileServiceTest {
 
     private final String FILE_PATH = "src/test/java/resources/test.json";
-    private final String EMPTY_FILE = "src/test/java/resources/empty.json";
 
 
     @Test
@@ -35,11 +35,12 @@ class FileServiceTest {
 
         // given
 
-        String emptyFile = EMPTY_FILE;
+        final String EMPTY_FILE = "src/test/java/resources/empty.json";
+
 
         // when
 
-        var exception = assertThrows(RuntimeException.class, () -> FileService.convertFileToJson(emptyFile));
+        var exception = assertThrows(RuntimeException.class, () -> FileService.convertFileToJson(EMPTY_FILE));
 
         // then
 
@@ -56,11 +57,11 @@ class FileServiceTest {
 
         // when
 
-        var objects = FileService.jsonFileToObjectList(test);
+        var objects = FileService.jsonFileToObjectList(test, Movie.class);
 
         // then
 
-        assertDoesNotThrow(() -> FileService.jsonFileToObjectList(test));
+        assertDoesNotThrow(() -> FileService.jsonFileToObjectList(test, Movie.class));
         assertNotNull(objects.get(0));
 
 
@@ -75,7 +76,7 @@ class FileServiceTest {
 
         // when
 
-        var objects = FileService.jsonFileToObjectList(test);
+        var objects = FileService.jsonFileToObjectList(test, Movie.class);
 
         // then
 
