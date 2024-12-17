@@ -10,45 +10,24 @@ public class Movie {
     private int releaseDate;
     private Double rating;
 
-    Long getId() {
-        return id;
-    }
-
-    void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
-    }
-
-    void setTitle(String title) {
-        this.title = title;
     }
 
     public Category getCategory() {
         return category;
     }
 
-    void setCategory(Category category) {
-        this.category = category;
-    }
 
     public Integer getReleaseDate() {
         return releaseDate;
-    }
-
-    void setReleaseDate(Integer releaseDate) {
-        this.releaseDate = releaseDate;
     }
 
     public Double getRating() {
         return rating;
     }
 
-    void setRating(Double rating) {
-        this.rating = rating;
-    }
 
     @Override
     public String toString() {
