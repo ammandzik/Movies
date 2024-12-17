@@ -2,22 +2,30 @@ package movie.service;
 
 import movie.model.Movie;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
+import static java.util.Comparator.comparing;
+
 public class MovieService {
 
-    public static Movie getRandomTitle(String filePath){
+    public static String getRandomTitle(String filePath) {
 
-        return generateRandomMovie(filePath);
+        var movie = generateRandomMovie(filePath);
+
+        return movie.getTitle();
 
     }
 
-    public static <T> void displayTitles(List<T> list){
+    public static void displayTitles(List<Movie> list) {
 
-        list.forEach(System.out::println);
 
+        List<String> movies = list.stream()
+                .map(movie -> "Category: " + movie.getCategory() + ", Title: " + movie.getTitle() + ", Rating: *" + movie.getRating() +
+                        ", Release date: " + movie.getReleaseDate())
+                .toList();
+
+        movies.forEach(System.out::println);
 
     }
 
@@ -25,13 +33,12 @@ public class MovieService {
 
         var allMovies = FileService.jsonFileToObjectList(filePath, Movie.class);
 
-        var moviesByCategory = allMovies
+        return allMovies
                 .stream()
                 .filter(movie -> category.equals(movie.getCategory().getDescription()))
-                .sorted(Comparator.comparing(Movie::getTitle))
+                .sorted(comparing(Movie::getReleaseDate))
                 .toList();
 
-        return moviesByCategory;
 
     }
 
@@ -39,49 +46,37 @@ public class MovieService {
 
         var allMovies = FileService.jsonFileToObjectList(filePath, Movie.class);
 
-        allMovies.sort(new Comparator<Movie>() {
-            @Override
-            public int compare(Movie o1, Movie o2) {
+        return allMovies
+                .stream()
+                .sorted(comparing(Movie::getReleaseDate).thenComparing(Movie::getTitle))
+                .toList();
 
-                return o1.getReleaseDate().compareTo(o2.getReleaseDate());
-            }
-        });
-
-
-        return allMovies;
     }
 
     public static List<Movie> movieByRating(String filePath) {
 
         var allMovies = FileService.jsonFileToObjectList(filePath, Movie.class);
 
-        allMovies.sort(new Comparator<Movie>() {
-            @Override
-            public int compare(Movie o1, Movie o2) {
-
-                return o2.getRating().compareTo(o1.getRating());
-            }
-        });
-
-        return allMovies;
+        return allMovies
+                .stream()
+                .sorted(comparing(Movie::getRating).reversed())
+                .toList();
 
 
     }
 
-    private static Movie generateRandomMovie(String filePath){
+    private static Movie generateRandomMovie(String filePath) {
 
-         var allMovies = FileService.jsonFileToObjectList(filePath, Movie.class);
+        var allMovies = FileService.jsonFileToObjectList(filePath, Movie.class);
 
-         var random = new Random();
+        var random = new Random();
 
-         var randomNumber = random.nextInt(allMovies.size());
+        var randomNumber = random.nextInt(allMovies.size());
 
-         return allMovies.get(randomNumber);
+        return allMovies.get(randomNumber);
 
 
     }
-
-
 
 
 }

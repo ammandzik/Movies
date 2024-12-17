@@ -27,7 +27,7 @@ public class Menu {
                         System.out.println("Place for quiz");
                         break;
                     case 3:
-                        getRandomTitle(FILE_PATH);
+                        System.out.println("*** Your random title is: "+ getRandomTitle(FILE_PATH) + " *** \n");
                     case 0:
                         System.out.println("See you next time!");
                         break;
@@ -120,14 +120,14 @@ public class Menu {
     }
 
     private static void moviesSubMenu() {
-        System.out.println("1.Movies by categories \n" +
+        System.out.println("\n1.Movies by categories \n" +
                 "2.Movies by ratings \n" +
                 "3.Movies by release date \n" +
                 "4.Quit to main menu - press 0");
     }
 
     private static void categoriesSubMenu() {
-        System.out.println("1.Adventure \n" +
+        System.out.println("\n1.Adventure \n" +
                 "2.Thriller \n" +
                 "3.Sci-Fi \n" +
                 "4.Previous page - press 0");
