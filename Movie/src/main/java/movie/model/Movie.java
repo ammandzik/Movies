@@ -8,7 +8,7 @@ public class Movie {
     private String title;
     private Category category;
     private int releaseDate;
-    private double rating;
+    private Double rating;
 
     Long getId() {
         return id;
@@ -42,11 +42,11 @@ public class Movie {
         this.releaseDate = releaseDate;
     }
 
-    public double getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    void setRating(double rating) {
+    void setRating(Double rating) {
         this.rating = rating;
     }
 
