@@ -9,7 +9,7 @@ public class Menu {
 
     private static final Scanner scanner = new Scanner(System.in);
     private static int userChoice;
-    private final static String FILE_PATH = "src/main/resources/movies.json";
+    private final static String FILE_PATH = "Movie/src/main/resources/movies.json";
 
     public static void displayMenu() {
 
