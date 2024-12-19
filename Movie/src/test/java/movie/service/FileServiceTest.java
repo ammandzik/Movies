@@ -14,15 +14,12 @@ class FileServiceTest {
 
 
     @Test
-    public void shouldConvertFileToJsonCorrectly() {
+    void shouldConvertFileToJsonCorrectly() {
 
-        //given
-
-        String test = FILE_PATH;
 
         //when
 
-        var jsonArray = assertDoesNotThrow(() -> convertFileToJson(test));
+        var jsonArray = assertDoesNotThrow(() -> convertFileToJson(FILE_PATH));
 
         //then
 
@@ -33,7 +30,7 @@ class FileServiceTest {
     }
 
     @Test
-    public void convertEmptyJsonTestShouldThrowException() {
+    void convertEmptyJsonTestShouldThrowException() {
 
         // given
 
@@ -51,15 +48,12 @@ class FileServiceTest {
     }
 
     @Test
-    public void shouldProvideCorrectJsonFileConversionToObjectList() {
+    void shouldProvideCorrectJsonFileConversionToObjectList() {
 
-        // given
-
-        String test = FILE_PATH;
 
         // when
 
-        var objects = assertDoesNotThrow(() -> jsonFileToObjectList(test, Movie.class));
+        var objects = assertDoesNotThrow(() -> jsonFileToObjectList(FILE_PATH, Movie.class));
 
         // then
 
@@ -68,7 +62,7 @@ class FileServiceTest {
     }
 
     @Test
-    public void jsonFileToObjectListShouldThrowIndexOutOfBoundsException() {
+    void jsonFileToObjectListShouldThrowIndexOutOfBoundsException() {
 
 
         // when
@@ -78,7 +72,7 @@ class FileServiceTest {
 
         // then
 
-        assertThrows(IndexOutOfBoundsException.class, () -> objects.get(objects.size()));
+        assertThrows(IndexOutOfBoundsException.class, () -> objects.get(10000));
 
 
     }

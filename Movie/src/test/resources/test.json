@@ -40,5 +40,12 @@
     "category": "Sci-Fi",
     "releaseDate": 1992,
     "rating": 8
+  },
+  {
+    "id": "5",
+    "title": "Cosmo 2",
+    "category": "Sci-Fi",
+    "releaseDate": 2016,
+    "rating": 8.76
   }
 ]
