@@ -6,19 +6,19 @@ import java.util.List;
 import java.util.Random;
 
 import static java.util.Comparator.comparing;
+import static movie.service.FileService.jsonFileToObjectList;
 
-public class MovieService {
+class MovieService {
 
     public static String getRandomTitle(String filePath) {
 
         var movie = generateRandomMovie(filePath);
 
-        return movie.getTitle();
+        return movie.getTitle() + " " + movie.getReleaseDate();
 
     }
 
     public static void displayTitles(List<Movie> list) {
-
 
         List<String> movies = list.stream()
                 .map(movie -> "Category: " + movie.getCategory() + ", Title: " + movie.getTitle() + ", Rating: *" + movie.getRating() +
@@ -31,7 +31,7 @@ public class MovieService {
 
     public static List<Movie> movieByCategory(String category, String filePath) {
 
-        var allMovies = FileService.jsonFileToObjectList(filePath, Movie.class);
+        var allMovies = jsonFileToObjectList(filePath, Movie.class);
 
         return allMovies
                 .stream()
@@ -44,7 +44,7 @@ public class MovieService {
 
     public static List<Movie> movieByReleaseDate(String filePath) {
 
-        var allMovies = FileService.jsonFileToObjectList(filePath, Movie.class);
+        var allMovies = jsonFileToObjectList(filePath, Movie.class);
 
         return allMovies
                 .stream()
@@ -55,7 +55,7 @@ public class MovieService {
 
     public static List<Movie> movieByRating(String filePath) {
 
-        var allMovies = FileService.jsonFileToObjectList(filePath, Movie.class);
+        var allMovies = jsonFileToObjectList(filePath, Movie.class);
 
         return allMovies
                 .stream()
@@ -67,7 +67,7 @@ public class MovieService {
 
     private static Movie generateRandomMovie(String filePath) {
 
-        var allMovies = FileService.jsonFileToObjectList(filePath, Movie.class);
+        var allMovies = jsonFileToObjectList(filePath, Movie.class);
 
         var random = new Random();
 

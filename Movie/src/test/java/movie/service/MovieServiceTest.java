@@ -6,7 +6,7 @@ import static movie.service.MovieService.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MovieServiceTest {
-    
+
 
     private final String FILE_PATH = "src/test/resources/test.json";
 

@@ -3,6 +3,7 @@ package movie.service;
 import java.util.InputMismatchException;
 
 import static movie.service.MovieService.*;
+import static movie.service.SearchBarService.searchForTitle;
 import static movie.service.UserService.askForUserInput;
 
 public class Menu {
@@ -27,6 +28,10 @@ public class Menu {
                     case 3:
                         System.out.println("*** Your random title is: " + getRandomTitle(FILE_PATH) + " *** \n");
                         break;
+                    case 4:
+                        System.out.println("Please provide your search phrase: ");
+                        searchForTitle(askForUserInput().next(), FILE_PATH);
+                        break;
                     case 0:
                         System.out.println("See you next time!");
                         break;
@@ -40,10 +45,8 @@ public class Menu {
         } catch (InputMismatchException e) {
 
             System.out.println("Incorrect argument provided. Only numbers above are allowed.");
-
-        } finally {
-
             displayMenu();
+
         }
     }
 
@@ -133,30 +136,39 @@ public class Menu {
     private static void entryMenu() {
 
         System.out.println("""
+                
                 Welcome to our movies library!
                 Choose one of the below options:
                 1.Movies titles
                 2.Have some fun - take a movie knowledge Quiz!
                 3.Choose random title for today
                 4.Search for movie title
-                5.Quit - press 0""");
+                5.Quit - press 0
+                
+                """);
 
     }
 
     private static void moviesSubMenu() {
         System.out.println("""
+                
                 1.Movies by categories
                 2.Movies by ratings
                 3.Movies by release date
-                4.Quit to main menu - press 0""");
+                4.Quit to main menu - press 0
+                
+                """);
     }
 
     private static void categoriesSubMenu() {
         System.out.println("""
-                1.Adventure 
-                2.Thriller 
-                3.Sci-Fi 
-                4.Previous page - press 0""");
+                
+                1.Adventure
+                2.Thriller
+                3.Sci-Fi
+                4.Previous page - press 0
+                
+                """);
     }
 
 
