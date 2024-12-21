@@ -110,5 +110,11 @@
     "category": "Thriller",
     "releaseDate": 1992,
     "rating": 7.94
+  },{
+    "id": "17",
+    "title": "Indiana Jones and the Dial of Destiny",
+    "category": "Adventure",
+    "releaseDate": 2023,
+    "rating": 6.4
   }
 ]
