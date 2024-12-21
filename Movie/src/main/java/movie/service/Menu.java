@@ -84,10 +84,8 @@ public class Menu {
         } catch (InputMismatchException e) {
 
             System.out.println("Incorrect argument provided. Only numbers above are allowed.");
-
-        } finally {
-
             displaySubMenu();
+
         }
 
     }
@@ -126,9 +124,6 @@ public class Menu {
 
             System.out.println("Incorrect argument provided. Only numbers above are allowed.");
 
-        } finally {
-
-            displayCategoriesMenu();
         }
 
     }

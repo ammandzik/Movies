@@ -44,7 +44,7 @@ class FileService {
 
     public static <T> List<T> jsonFileToObjectList(String file, Class<T> customClass) throws IndexOutOfBoundsException {
 
-        var jsonArray = (JSONArray) convertFileToJson(file);
+        var jsonArray = convertFileToJson(file);
 
         List<T> objects = new ArrayList<>();
 

@@ -68,11 +68,11 @@ class FileServiceTest {
         // when
 
         var objects = jsonFileToObjectList(FILE_PATH, Movie.class);
-
+        var objectsSize = objects.size();
 
         // then
 
-        assertThrows(IndexOutOfBoundsException.class, () -> objects.get(10000));
+        assertThrows(IndexOutOfBoundsException.class, () -> objects.get(objectsSize));
 
 
     }
