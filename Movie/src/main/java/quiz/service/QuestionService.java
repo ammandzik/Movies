@@ -19,31 +19,41 @@ class QuestionService {
 
     public static List<Question> addQuestionsToPool(String filePath) {
 
-        List<Question> questions = getQuestions(filePath);
+        try {
 
-        List<Integer> randomNumbers = new ArrayList<>();
+            List<Question> questions = getQuestions(filePath);
 
-        List<Question> questionsPool = new ArrayList<>(3);
+            List<Integer> randomNumbers = new ArrayList<>();
+
+            List<Question> questionsPool = new ArrayList<>(3);
 
 
-        for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 3; i++) {
 
-            int randomNumber = RANDOM.nextInt(questions.toArray().length);
+                int randomNumber = RANDOM.nextInt(questions.toArray().length);
 
-            if (randomNumbers.contains(randomNumber)) {
+                if (randomNumbers.contains(randomNumber)) {
 
-                i--;
+                    i--;
 
-            } else {
+                } else {
 
-                var randomQuestion = questions.get(randomNumber);
-                questionsPool.add(randomQuestion);
-                randomNumbers.add(randomNumber);
+                    var randomQuestion = questions.get(randomNumber);
+                    questionsPool.add(randomQuestion);
+                    randomNumbers.add(randomNumber);
+                }
+
+
             }
+            return questionsPool;
 
+        } catch (Exception e) {
 
+            System.err.println("Error adding questions to pool: " + e.getMessage());
+
+            return List.of();
         }
-        return questionsPool;
+
 
     }
 

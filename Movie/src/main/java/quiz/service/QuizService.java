@@ -23,6 +23,17 @@ public class QuizService {
 
     }
 
+    public static void playQuiz() {
+
+        var quiz = new Quiz();
+        var player = new Player();
+
+        displayQuiz(addQuestionsToPool(FILE_PATH), player, quiz);
+        displayScore(player, quiz);
+
+
+    }
+
     public static void displayQuiz(List<Question> questions, Player player, Quiz quiz) {
 
 
@@ -77,17 +88,6 @@ public class QuizService {
                 correctAnswers.add(answers.get(x).getCorrectAnswer());
             }
         }
-
-    }
-
-    public static void playQuiz() {
-
-        var quiz = new Quiz();
-        var player = new Player();
-
-        displayQuiz(addQuestionsToPool(FILE_PATH), player, quiz);
-        displayScore(player, quiz);
-
 
     }
 

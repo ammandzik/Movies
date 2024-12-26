@@ -1,0 +1,21 @@
+[ {
+  "questionNumber" : 1,
+  "questionText" : "\nIndiana Jones and the Dial of Destiny was released in \n a) 2015 \n b) 1997 \n c) 2023",
+  "answers" : [ {
+    "correctAnswer" : "c"
+  }]
+}, {
+  "questionNumber" : 2,
+  "questionText" : "\n Interstellar is: \n a) Adventure movie \n b) Thriller movie \n c) Sci-Fi movie",
+  "answers" : [ {
+    "correctAnswer" : "c"
+  } ]
+}, {
+  "questionNumber" : 3,
+  "questionText" : "\n The Butterfly Effect: \n a) is a movie about animals \n b) Time travel movie \n c) Sci-Fi movie",
+  "answers" : [ {
+    "correctAnswer" : "b"
+  }, {
+    "correctAnswer" : "c"
+  } ]
+} ]
