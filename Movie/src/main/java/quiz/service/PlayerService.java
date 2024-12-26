@@ -28,7 +28,6 @@ public class PlayerService {
 
     public static boolean answerCorrect(Set<String> correctAnswers, String playerGuess) {
 
-
         return correctAnswers.remove(playerGuess);
 
     }

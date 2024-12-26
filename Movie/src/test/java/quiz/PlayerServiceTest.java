@@ -7,17 +7,21 @@ import java.util.List;
 import java.util.Set;
 
 import static junit.framework.Assert.*;
+import static quiz.DataTest.*;
 import static quiz.service.PlayerService.answerCorrect;
 import static quiz.service.PlayerService.countScore;
 
 class PlayerServiceTest {
 
-    Player p1 = DataTest.createPlayer();
-    Set<String> correctAnswers = DataTest.testAnswers;
+    Player p1 = createPlayer();
+    static Set<String> correctAnswers = testAnswers;
+
+
 
     @Test
      void checkForCorrectAnswersTest() {
 
+        fillSet();
 
         assertTrue(answerCorrect(correctAnswers, "a"));
         assertTrue(answerCorrect(correctAnswers, "c"));
@@ -28,6 +32,8 @@ class PlayerServiceTest {
     @Test
      void checkForIncorrectAnswersTest() {
 
+        fillSet();
+
         assertFalse(answerCorrect(correctAnswers, "b"));
         assertFalse(answerCorrect(correctAnswers, "d"));
 
@@ -36,12 +42,28 @@ class PlayerServiceTest {
     }
 
     @Test
+    void checkForDuplicatedAnswersTest() {
+
+        fillSet();
+
+        countScore(correctAnswers, "a", p1);
+        countScore(correctAnswers, "a", p1);
+
+        assertEquals(1, p1.getScore());
+
+
+
+    }
+
+    @Test
      void incrementScoreWhenCorrectAnswerTest() {
+
+        fillSet();
 
         countScore(correctAnswers, "a", p1);
         countScore(correctAnswers, "c", p1);
 
-        assertTrue(p1.getScore() == 2);
+        assertEquals(2, p1.getScore());
 
 
     }
@@ -52,7 +74,7 @@ class PlayerServiceTest {
         countScore(correctAnswers, "b", p1);
         countScore(correctAnswers, "d", p1);
 
-        assertTrue(p1.getScore() == 0);
+        assertEquals(0, p1.getScore());
 
 
     }

@@ -2,13 +2,22 @@ package quiz;
 
 import quiz.model.Player;
 
-import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class DataTest {
 
-    public static Set<String> testAnswers = Set.of("a", "c");
-    public static Player createPlayer(){
+    public static Set<String> testAnswers = new TreeSet<>();
+
+    public static void fillSet(){
+
+        testAnswers.add("a");
+        testAnswers.add("c");
+
+
+    }
+
+    public static Player createPlayer() {
 
         Player player = new Player();
 
