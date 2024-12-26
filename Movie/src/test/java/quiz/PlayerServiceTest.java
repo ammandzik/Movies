@@ -3,7 +3,6 @@ package quiz;
 import org.junit.jupiter.api.Test;
 import quiz.model.Player;
 
-import java.util.List;
 import java.util.Set;
 
 import static junit.framework.Assert.*;
@@ -17,9 +16,8 @@ class PlayerServiceTest {
     static Set<String> correctAnswers = testAnswers;
 
 
-
     @Test
-     void checkForCorrectAnswersTest() {
+    void checkForCorrectAnswersTest() {
 
         fillSet();
 
@@ -30,13 +28,12 @@ class PlayerServiceTest {
     }
 
     @Test
-     void checkForIncorrectAnswersTest() {
+    void checkForIncorrectAnswersTest() {
 
         fillSet();
 
         assertFalse(answerCorrect(correctAnswers, "b"));
         assertFalse(answerCorrect(correctAnswers, "d"));
-
 
 
     }
@@ -52,11 +49,10 @@ class PlayerServiceTest {
         assertEquals(1, p1.getScore());
 
 
-
     }
 
     @Test
-     void incrementScoreWhenCorrectAnswerTest() {
+    void incrementScoreWhenCorrectAnswerTest() {
 
         fillSet();
 

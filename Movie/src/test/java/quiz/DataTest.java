@@ -19,7 +19,7 @@ public class DataTest {
 
     public static Player createPlayer() {
 
-        Player player = new Player();
+        var player = new Player();
 
         return player;
     }
