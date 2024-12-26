@@ -1,5 +1,6 @@
 package movie.service;
 
+import movie.advice.FileParseException;
 import movie.model.Movie;
 import org.json.simple.JSONArray;
 import org.junit.jupiter.api.Test;
@@ -39,11 +40,11 @@ class FileServiceTest {
 
         // when
 
-        var exception = assertThrows(RuntimeException.class, () -> convertFileToJson(EMPTY_FILE));
+        var exception = assertThrows(FileParseException.class, () -> convertFileToJson(EMPTY_FILE));
 
         // then
 
-        assertEquals("Could not parse file.", exception.getMessage());
+        assertEquals("Could not parse the file.", exception.getMessage());
 
     }
 
@@ -58,22 +59,6 @@ class FileServiceTest {
         // then
 
         assertNotNull(objects.get(0));
-
-    }
-
-    @Test
-    void jsonFileToObjectListShouldThrowIndexOutOfBoundsException() {
-
-
-        // when
-
-        var objects = jsonFileToObjectList(FILE_PATH, Movie.class);
-        var objectsSize = objects.size();
-
-        // then
-
-        assertThrows(IndexOutOfBoundsException.class, () -> objects.get(objectsSize));
-
 
     }
 

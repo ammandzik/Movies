@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static movie.service.SearchBarService.searchForTitle;
+import static movie.service.SearchBarService.displaySearchResult;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SearchBarServiceTest {
@@ -19,11 +19,10 @@ class SearchBarServiceTest {
         final var PHRASE = "cos";
 
         //when
-        List<Movie> movies = assertDoesNotThrow(() -> searchForTitle(PHRASE, FILE_PATH));
+        List<Movie> movies = assertDoesNotThrow(() -> displaySearchResult(PHRASE, FILE_PATH));
 
         //then
         assertFalse(movies.isEmpty());
-        assertTrue(movies.size() > 0);
 
 
     }
@@ -32,15 +31,14 @@ class SearchBarServiceTest {
     void shouldPrintErrorMessageWhileSearchResultsAreEmpty() {
 
         //given
-        String PHRASE = "Freepik";
+        final var PHRASE = "Freepik";
 
 
         //when
-        List<Movie> movies = assertDoesNotThrow(() -> searchForTitle(PHRASE, FILE_PATH));
+        List<Movie> movies = assertDoesNotThrow(() -> displaySearchResult(PHRASE, FILE_PATH));
 
         //then
         assertTrue(movies.isEmpty());
-        assertEquals(0, movies.size());
 
 
     }

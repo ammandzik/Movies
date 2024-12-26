@@ -2,6 +2,7 @@ package movie.service;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import movie.advice.FileParseException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -15,34 +16,38 @@ import java.util.List;
 
 class FileService {
 
+    private FileService() {
+
+    }
+
     public static JSONArray convertFileToJson(String fileName) {
 
-        JSONArray jsonArray;
 
         var jsonParser = new JSONParser();
 
-        try {
+        try (FileReader fr = new FileReader(fileName)) {
 
-            jsonArray = (JSONArray) jsonParser.parse(new FileReader(fileName));
+            return (JSONArray) jsonParser.parse(fr);
 
         } catch (FileNotFoundException e) {
 
-            throw new RuntimeException("File does not exist.");
+            System.err.println("File was not found.");
 
         } catch (IOException e) {
 
-            throw new RuntimeException(e.getMessage());
+            System.err.println(e.getMessage());
 
         } catch (ParseException e) {
 
-            throw new RuntimeException("Could not parse file.");
+            throw new FileParseException();
+
         }
 
+        return new JSONArray();
 
-        return jsonArray;
     }
 
-    public static <T> List<T> jsonFileToObjectList(String file, Class<T> customClass) throws IndexOutOfBoundsException {
+    public static <T> List<T> jsonFileToObjectList(String file, Class<T> customClass) {
 
         var jsonArray = convertFileToJson(file);
 
@@ -66,7 +71,8 @@ class FileService {
 
         } catch (ClassCastException ex) {
 
-            throw new RuntimeException("Object of class JSONObject cannot be casted to custom class.");
+            System.err.println("Object of class JSONObject cannot be casted to a custom class.");
+
         }
 
         return objects;

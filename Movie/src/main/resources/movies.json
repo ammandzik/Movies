@@ -116,5 +116,83 @@
     "category": "Adventure",
     "releaseDate": 2023,
     "rating": 6.4
-  }
+  },{
+  "id": "18",
+  "title": "Interstellar",
+  "category": "Sci-Fi",
+  "releaseDate": 2014,
+  "rating": 7.96
+},{
+  "id": "19",
+  "title": "A Clockwork Orange",
+  "category": "Sci-Fi",
+  "releaseDate": 1971,
+  "rating": 7.91
+},{
+  "id": "20",
+  "title": "Deja Vu",
+  "category": "Sci-Fi",
+  "releaseDate": 2006,
+  "rating": 7.3
+},{
+  "id": "21",
+  "title": "Ghost in the Shell",
+  "category": "Sci-Fi",
+  "releaseDate": 1995,
+  "rating": 7.86
+},{
+  "id": "22",
+  "title": "Twardowsky 2.0",
+  "category": "Sci-Fi",
+  "releaseDate": 2016,
+  "rating": 7.79
+},{
+  "id": "23",
+  "title": "Back to the Future",
+  "category": "Sci-Fi",
+  "releaseDate": 1985,
+  "rating": 7.46
+},{
+  "id": "24",
+  "title": "The Butterfly Effect",
+  "category": "Sci-Fi",
+  "releaseDate": 2004,
+  "rating": 7.8
+},{
+  "id": "25",
+  "title": "Twelve Monkeys",
+  "category": "Sci-Fi",
+  "releaseDate": 1995,
+  "rating": 7.6
+},{
+  "id": "26",
+  "title": "Predestination",
+  "category": "Sci-Fi",
+  "releaseDate": 2014,
+  "rating": 7.1
+},{
+  "id": "27",
+  "title": "Lucy",
+  "category": "Sci-Fi",
+  "releaseDate": 2014,
+  "rating": 6.4
+},{
+  "id": "28",
+  "title": "Le boulet",
+  "category": "Adventure",
+  "releaseDate": 2002,
+  "rating": 8.01
+},{
+  "id": "29",
+  "title": "Zootopia",
+  "category": "Adventure",
+  "releaseDate": 2016,
+  "rating": 7.91
+},{
+  "id": "30",
+  "title": "The Plague Dogs",
+  "category": "Adventure",
+  "releaseDate": 1982,
+  "rating": 7.89
+}
 ]

@@ -4,12 +4,13 @@ import java.util.Scanner;
 
 class UserService {
 
+    private UserService(){
+
+    }
 
     public static Scanner askForUserInput() {
 
-        var scanner = new Scanner(System.in);
-
-        return scanner;
+        return new Scanner(System.in);
 
     }
 

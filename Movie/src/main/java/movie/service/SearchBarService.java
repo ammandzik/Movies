@@ -10,13 +10,13 @@ import static movie.service.MovieService.displayTitles;
 
 class SearchBarService {
 
-    public static List<Movie> searchForTitle(String userInput, String filePath) {
+    private SearchBarService() {
 
-        List<Movie> movies = jsonFileToObjectList(filePath, Movie.class)
-                .stream()
-                .filter(movie -> movie.getTitle().toLowerCase().contains(userInput.toLowerCase()))
-                .sorted(comparing(Movie::getReleaseDate))
-                .toList();
+    }
+
+    public static List<Movie> displaySearchResult(String userInput, String filePath) {
+
+        var movies = searchForTitle(userInput, filePath);
 
         if (movies.isEmpty()) {
 
@@ -33,6 +33,16 @@ class SearchBarService {
 
     }
 
+    private static List<Movie> searchForTitle(String userInput, String filePath) {
+
+        return jsonFileToObjectList(filePath, Movie.class)
+                .stream()
+                .filter(movie -> movie.getTitle().toLowerCase().contains(userInput.toLowerCase()))
+                .sorted(comparing(Movie::getReleaseDate))
+                .toList();
+
+    }
+
     private static void successMessage() {
 
         System.out.println("Please find your title/titles below:\n");
@@ -41,7 +51,7 @@ class SearchBarService {
 
     private static void errorMessage() {
 
-        System.out.println("Sorry. No movies were found with given phrase.\n");
+        System.err.println("Sorry. No movies were found with given phrase.\n");
 
     }
 

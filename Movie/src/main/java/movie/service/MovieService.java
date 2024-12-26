@@ -10,6 +10,9 @@ import static movie.service.FileService.jsonFileToObjectList;
 
 class MovieService {
 
+    private MovieService(){
+
+    }
     private static List<Movie> cachedMovies;
     private static final Random RANDOM = new Random();
 
@@ -67,7 +70,6 @@ class MovieService {
                 .stream()
                 .sorted(comparing(Movie::getRating).reversed())
                 .toList();
-
 
     }
 
