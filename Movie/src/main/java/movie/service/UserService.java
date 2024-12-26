@@ -2,7 +2,7 @@ package movie.service;
 
 import java.util.Scanner;
 
-class UserService {
+public class UserService {
 
     private UserService(){
 

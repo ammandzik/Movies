@@ -5,6 +5,8 @@ import java.util.InputMismatchException;
 import static movie.service.MovieService.*;
 import static movie.service.SearchBarService.displaySearchResult;
 import static movie.service.UserService.askForUserInput;
+import static quiz.service.QuizService.displayQuizMenu;
+
 
 public class Menu {
 
@@ -33,10 +35,10 @@ public class Menu {
                         displaySubMenu();
                         break;
                     case 2:
-                        System.out.println("Place for quiz");
+                        displayQuizMenu();
                         break;
                     case 3:
-                        System.out.println("*** Your random title is: " + getRandomTitle(FILE_PATH) + " *** \n");
+                        System.out.printf("*** Your random title is: %s *** %n", getRandomTitle(FILE_PATH));
                         break;
                     case 4:
                         System.out.println("Please provide your search phrase: ");

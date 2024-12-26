@@ -8,6 +8,8 @@ public class Main {
 
         displayMenu();
 
+        System.out.println();
+
 
     }
 }
