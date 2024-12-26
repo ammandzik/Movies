@@ -10,30 +10,39 @@ import static movie.service.FileService.jsonFileToObjectList;
 
 class MovieService {
 
+    private static List<Movie> cachedMovies;
+    private static final Random RANDOM = new Random();
+
     public static String getRandomTitle(String filePath) {
 
-        var movie = generateRandomMovie(filePath);
-
-        return movie.getTitle() + " " + movie.getReleaseDate();
+        return formatMovie(generateRandomMovie(filePath));
 
     }
 
-    public static void displayTitles(List<Movie> list) {
+    public static void displayTitles(List<Movie> titles) {
 
-        List<String> movies = list.stream()
-                .map(movie -> "Category: " + movie.getCategory() + ", Title: " + movie.getTitle() + ", Rating: *" + movie.getRating() +
+        formatTitles(titles).forEach(System.out::println);
+    }
+
+    private static String formatMovie(Movie movie) {
+
+        return movie.getTitle() + " (" + movie.getReleaseDate() + ")";
+    }
+
+    private static List<String> formatTitles(List<Movie> list) {
+
+        return list.stream()
+                .map(movie -> "Category: " + movie.getCategory() +
+                        ", Title: " + movie.getTitle() +
+                        ", Rating: *" + movie.getRating() +
                         ", Release date: " + movie.getReleaseDate())
                 .toList();
-
-        movies.forEach(System.out::println);
 
     }
 
     public static List<Movie> movieByCategory(String category, String filePath) {
 
-        var allMovies = jsonFileToObjectList(filePath, Movie.class);
-
-        return allMovies
+        return getMovies(filePath)
                 .stream()
                 .filter(movie -> category.equals(movie.getCategory().getDescription()))
                 .sorted(comparing(Movie::getReleaseDate))
@@ -44,9 +53,7 @@ class MovieService {
 
     public static List<Movie> movieByReleaseDate(String filePath) {
 
-        var allMovies = jsonFileToObjectList(filePath, Movie.class);
-
-        return allMovies
+        return getMovies(filePath)
                 .stream()
                 .sorted(comparing(Movie::getReleaseDate).thenComparing(Movie::getTitle))
                 .toList();
@@ -55,9 +62,8 @@ class MovieService {
 
     public static List<Movie> movieByRating(String filePath) {
 
-        var allMovies = jsonFileToObjectList(filePath, Movie.class);
 
-        return allMovies
+        return getMovies(filePath)
                 .stream()
                 .sorted(comparing(Movie::getRating).reversed())
                 .toList();
@@ -67,15 +73,40 @@ class MovieService {
 
     private static Movie generateRandomMovie(String filePath) {
 
-        var allMovies = jsonFileToObjectList(filePath, Movie.class);
+        var allMovies = getMovies(filePath);
 
-        var random = new Random();
+        if (allMovies.isEmpty()) {
 
-        var randomNumber = random.nextInt(allMovies.size());
+            throw new IllegalStateException("No movies available to select from.");
+        }
 
-        return allMovies.get(randomNumber);
+        return allMovies.get(RANDOM.nextInt(allMovies.size()));
 
 
+    }
+
+    private static List<Movie> getMovies(String filePath) {
+
+        if (cachedMovies == null) {
+
+            cachedMovies = safeJsonFileToObjectList(filePath);
+        }
+
+        return cachedMovies;
+    }
+
+    private static List<Movie> safeJsonFileToObjectList(String filePath) {
+
+        try {
+
+            return jsonFileToObjectList(filePath, Movie.class);
+
+        } catch (Exception e) {
+
+            System.err.println("Error loading movies: " + e.getMessage());
+
+            return List.of();
+        }
     }
 
 
