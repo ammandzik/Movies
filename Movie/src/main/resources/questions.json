@@ -226,5 +226,103 @@
         "correctAnswer": "a"
       }
     ]
+  }, {
+  "questionNumber": 32,
+  "questionText": "\nThe Wizard of Oz features: \n a) A magical road \n b) A wizard \n c) A magical storm",
+  "answers": [
+    {
+      "correctAnswer": "a"
+    },
+    {
+      "correctAnswer": "b"
+    }
+  ]
+},
+  {
+    "questionNumber": 33,
+    "questionText": "\nThe Avengers fight against: \n a) Aliens \n b) Robots \n c) Dinosaurs",
+    "answers": [
+      {
+        "correctAnswer": "a"
+      },
+      {
+        "correctAnswer": "b"
+      }
+    ]
+  },
+  {
+    "questionNumber": 34,
+    "questionText": "\nIn The Lord of the Rings, Frodo's mission is to: \n a) Destroy a ring \n b) Find a sword \n c) Save his homeland",
+    "answers": [
+      {
+        "correctAnswer": "a"
+      }
+    ]
+  },
+  {
+    "questionNumber": 35,
+    "questionText": "\nWhich movie stars both Brad Pitt and Leonardo DiCaprio? \n a) Once Upon a Time in Hollywood \n b) Fight Club \n c) The Departed",
+    "answers": [
+      {
+        "correctAnswer": "a"
+      }
+    ]
+  },
+  {
+    "questionNumber": 36,
+    "questionText": "\nThe movie Gravity is about: \n a) Space exploration \n b) Surviving in space \n c) Building a spaceship",
+    "answers": [
+      {
+        "correctAnswer": "a"
+      },
+      {
+        "correctAnswer": "b"
+      }
+    ]
+  },
+  {
+    "questionNumber": 37,
+    "questionText": "\nThe movie Joker explores: \n a) The origin story of Joker \n b) The fall of Batman \n c) Gotham City's dark side",
+    "answers": [
+      {
+        "correctAnswer": "a"
+      },
+      {
+        "correctAnswer": "c"
+      }
+    ]
+  },
+  {
+    "questionNumber": 38,
+    "questionText": "\nThe Titanic sinks because of: \n a) A storm \n b) An iceberg \n c) A fire",
+    "answers": [
+      {
+        "correctAnswer": "b"
+      }
+    ]
+  },
+  {
+    "questionNumber": 39,
+    "questionText": "\nWho is the main character in Toy Story? \n a) Woody \n b) Buzz Lightyear \n c) Andy",
+    "answers": [
+      {
+        "correctAnswer": "a"
+      },
+      {
+        "correctAnswer": "b"
+      }
+    ]
+  },
+  {
+    "questionNumber": 40,
+    "questionText": "\nWhich movie was directed by Alfred Hitchcock? \n a) Psycho \n b) Vertigo \n c) The Shining",
+    "answers": [
+      {
+        "correctAnswer": "a"
+      },
+      {
+        "correctAnswer": "b"
+      }
+    ]
   }
 ]

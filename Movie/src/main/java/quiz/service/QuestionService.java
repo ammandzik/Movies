@@ -25,10 +25,10 @@ class QuestionService {
 
             List<Integer> randomNumbers = new ArrayList<>();
 
-            List<Question> questionsPool = new ArrayList<>(3);
+            List<Question> questionsPool = new ArrayList<>(10);
 
 
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 10; i++) {
 
                 int randomNumber = RANDOM.nextInt(questions.toArray().length);
 

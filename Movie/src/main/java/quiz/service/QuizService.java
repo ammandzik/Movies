@@ -1,5 +1,6 @@
 package quiz.service;
 
+
 import quiz.model.Answer;
 import quiz.model.Player;
 import quiz.model.Question;
@@ -10,6 +11,7 @@ import java.util.*;
 import static movie.service.Menu.displayMenu;
 import static movie.service.UserService.askForUserInput;
 import static quiz.model.Score.displayScore;
+import static quiz.model.ScoreBoard.addScore;
 import static quiz.model.ScoreBoard.displayScoreBoard;
 import static quiz.service.PlayerService.*;
 import static quiz.service.QuestionService.addQuestionsToPool;
@@ -29,12 +31,13 @@ public class QuizService {
         var player = new Player();
 
         do {
-            saveUserName();
+            player.setName(saveUserName());
             displayQuiz(addQuestionsToPool(FILE_PATH), player, quiz);
             displayScore(player, quiz);
 
         } while (!quizOver);
 
+        addScore(player);
 
     }
 
@@ -70,6 +73,7 @@ public class QuizService {
 
         quizOver = true;
 
+
     }
 
     private static void countMaxOfQuizPoints(Quiz quiz) {
@@ -85,11 +89,11 @@ public class QuizService {
 
         for (int x = 0; x < answers.size(); x++) {
 
-            correctAnswers.add(answers.get(x).getCorrectAnswer());
+            correctAnswers.add(answers.get(x).correctAnswer());
 
             if (answers.size() > 1) {
 
-                correctAnswers.add(answers.get(x).getCorrectAnswer());
+                correctAnswers.add(answers.get(x).correctAnswer());
             }
         }
 

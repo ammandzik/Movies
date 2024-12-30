@@ -2,21 +2,7 @@ package quiz.model;
 
 import java.util.Objects;
 
-public class Answer {
-
-    private String correctAnswer;
-
-    private Answer() {
-
-    }
-
-    public Answer(String correctAnswer) {
-        this.correctAnswer = correctAnswer;
-    }
-
-    public String getCorrectAnswer() {
-        return correctAnswer;
-    }
+public record Answer(String correctAnswer) {
 
 
     @Override
@@ -25,11 +11,6 @@ public class Answer {
         if (o == null || getClass() != o.getClass()) return false;
         Answer answer = (Answer) o;
         return Objects.equals(correctAnswer, answer.correctAnswer);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(correctAnswer);
     }
 
     @Override
