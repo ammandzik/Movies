@@ -11,13 +11,13 @@ import static movie.service.Menu.displayMenu;
 import static movie.service.UserService.askForUserInput;
 import static quiz.model.Score.displayScore;
 import static quiz.model.ScoreBoard.displayScoreBoard;
-import static quiz.service.PlayerService.countScore;
-import static quiz.service.PlayerService.getUserAnswer;
+import static quiz.service.PlayerService.*;
 import static quiz.service.QuestionService.addQuestionsToPool;
 
 public class QuizService {
 
     private static final String FILE_PATH = "Movie/src/main/resources/questions.json";
+    private static boolean quizOver = false;
 
     private QuizService() {
 
@@ -28,8 +28,12 @@ public class QuizService {
         var quiz = new Quiz();
         var player = new Player();
 
-        displayQuiz(addQuestionsToPool(FILE_PATH), player, quiz);
-        displayScore(player, quiz);
+        do {
+            saveUserName();
+            displayQuiz(addQuestionsToPool(FILE_PATH), player, quiz);
+            displayScore(player, quiz);
+
+        } while (!quizOver);
 
 
     }
@@ -62,9 +66,9 @@ public class QuizService {
             }
 
             System.out.printf("Correct answer/-s %s %n", correctAnswers);
-
         }
 
+        quizOver = true;
 
     }
 

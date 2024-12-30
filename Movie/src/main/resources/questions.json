@@ -1,21 +1,230 @@
-[ {
-  "questionNumber" : 1,
-  "questionText" : "\nIndiana Jones and the Dial of Destiny was released in \n a) 2015 \n b) 1997 \n c) 2023",
-  "answers" : [ {
-    "correctAnswer" : "c"
-  }]
-}, {
-  "questionNumber" : 2,
-  "questionText" : "\n Interstellar is: \n a) Adventure movie \n b) Thriller movie \n c) Sci-Fi movie",
-  "answers" : [ {
-    "correctAnswer" : "c"
-  } ]
-}, {
-  "questionNumber" : 3,
-  "questionText" : "\n The Butterfly Effect: \n a) is a movie about animals \n b) Time travel movie \n c) Sci-Fi movie",
-  "answers" : [ {
-    "correctAnswer" : "b"
-  }, {
-    "correctAnswer" : "c"
-  } ]
-} ]
+[
+  {
+    "questionNumber": 1,
+    "questionText": "\nIndiana Jones and the Dial of Destiny was released in \n a) 2015 \n b) 1997 \n c) 2023",
+    "answers": [
+      {
+        "correctAnswer": "c"
+      }
+    ]
+  },
+  {
+    "questionNumber": 2,
+    "questionText": "\nInterstellar is: \n a) Adventure movie \n b) Thriller movie \n c) Sci-Fi movie",
+    "answers": [
+      {
+        "correctAnswer": "c"
+      }
+    ]
+  },
+  {
+    "questionNumber": 3,
+    "questionText": "\nThe Butterfly Effect: \n a) is a movie about animals \n b) Time travel movie \n c) Sci-Fi movie",
+    "answers": [
+      {
+        "correctAnswer": "b"
+      },
+      {
+        "correctAnswer": "c"
+      }
+    ]
+  },
+  {
+    "questionNumber": 4,
+    "questionText": "\nThe Matrix was released in: \n a) 1999 \n b) 2003 \n c) 1995",
+    "answers": [
+      {
+        "correctAnswer": "a"
+      }
+    ]
+  },
+  {
+    "questionNumber": 5,
+    "questionText": "\nTitanic is a: \n a) Documentary \n b) Romantic movie \n c) Thriller",
+    "answers": [
+      {
+        "correctAnswer": "b"
+      }
+    ]
+  },
+  {
+    "questionNumber": 6,
+    "questionText": "\nAvatar was directed by: \n a) James Cameron \n b) Steven Spielberg \n c) Christopher Nolan",
+    "answers": [
+      {
+        "correctAnswer": "a"
+      }
+    ]
+  },
+  {
+    "questionNumber": 7,
+    "questionText": "\nInception is a: \n a) Comedy \n b) Action movie \n c) Sci-Fi movie",
+    "answers": [
+      {
+        "correctAnswer": "c"
+      }
+    ]
+  },
+  {
+    "questionNumber": 8,
+    "questionText": "\nWhich movie is based on a Marvel comic? \n a) Iron Man \n b) Inception \n c) Titanic",
+    "answers": [
+      {
+        "correctAnswer": "a"
+      }
+    ]
+  },
+  {
+    "questionNumber": 9,
+    "questionText": "\nHarry Potter series is about: \n a) Time travel \n b) Wizards \n c) Superheroes",
+    "answers": [
+      {
+        "correctAnswer": "b"
+      }
+    ]
+  },
+  {
+    "questionNumber": 10,
+    "questionText": "\nJurassic Park features: \n a) Robots \n b) Dinosaurs \n c) Space travel",
+    "answers": [
+      {
+        "correctAnswer": "b"
+      }
+    ]
+  },
+  {
+    "questionNumber": 11,
+    "questionText": "\nThe main character in The Dark Knight is: \n a) Superman \n b) Batman \n c) Iron Man",
+    "answers": [
+      {
+        "correctAnswer": "b"
+      }
+    ]
+  },
+  {
+    "questionNumber": 12,
+    "questionText": "\nThe Lion King is a: \n a) Animated movie \n b) Horror movie \n c) Action movie",
+    "answers": [
+      {
+        "correctAnswer": "a"
+      }
+    ]
+  },
+  {
+    "questionNumber": 13,
+    "questionText": "\nWhich movie features a character named Neo? \n a) The Matrix \n b) Avatar \n c) The Dark Knight",
+    "answers": [
+      {
+        "correctAnswer": "a"
+      }
+    ]
+  },
+  {
+    "questionNumber": 14,
+    "questionText": "\nStar Wars series primarily focuses on: \n a) Space exploration \n b) Wars in space \n c) Medieval battles",
+    "answers": [
+      {
+        "correctAnswer": "b"
+      }
+    ]
+  },
+  {
+    "questionNumber": 15,
+    "questionText": "\nThe Godfather is a: \n a) Sci-Fi movie \n b) Crime drama \n c) Documentary",
+    "answers": [
+      {
+        "correctAnswer": "b"
+      }
+    ]
+  },
+  {
+    "questionNumber": 16,
+    "questionText": "\nThe main character in Forrest Gump is known for: \n a) Playing basketball \n b) Running \n c) Painting",
+    "answers": [
+      {
+        "correctAnswer": "b"
+      }
+    ]
+  },
+  {
+    "questionNumber": 17,
+    "questionText": "\nWhich movie involves dreams within dreams? \n a) Inception \n b) Avatar \n c) Interstellar",
+    "answers": [
+      {
+        "correctAnswer": "a"
+      }
+    ]
+  },
+  {
+    "questionNumber": 18,
+    "questionText": "\nThe Avengers is about: \n a) Space exploration \n b) A group of superheroes \n c) Dinosaurs",
+    "answers": [
+      {
+        "correctAnswer": "b"
+      }
+    ]
+  },
+  {
+    "questionNumber": 19,
+    "questionText": "\nWho directed Pulp Fiction? \n a) Quentin Tarantino \n b) Steven Spielberg \n c) Martin Scorsese",
+    "answers": [
+      {
+        "correctAnswer": "a"
+      }
+    ]
+  },
+  {
+    "questionNumber": 20,
+    "questionText": "\nFrozen is about: \n a) A snowman \n b) A magical queen \n c) Both a and b",
+    "answers": [
+      {
+        "correctAnswer": "c"
+      }
+    ]
+  },
+  {
+    "questionNumber": 21,
+    "questionText": "\nThe main character in Gladiator is: \n a) A gladiator \n b) A king \n c) A general",
+    "answers": [
+      {
+        "correctAnswer": "a"
+      }
+    ]
+  },
+  {
+    "questionNumber": 22,
+    "questionText": "\nWhich movie features an AI named HAL 9000? \n a) 2001: A Space Odyssey \n b) The Terminator \n c) I, Robot",
+    "answers": [
+      {
+        "correctAnswer": "a"
+      }
+    ]
+  },
+  {
+    "questionNumber": 23,
+    "questionText": "\nSchindler's List is a: \n a) War movie \n b) Comedy \n c) Thriller",
+    "answers": [
+      {
+        "correctAnswer": "a"
+      }
+    ]
+  },
+  {
+    "questionNumber": 24,
+    "questionText": "\nThe Hobbit series is based on a book by: \n a) J.K. Rowling \n b) J.R.R. Tolkien \n c) George R.R. Martin",
+    "answers": [
+      {
+        "correctAnswer": "b"
+      }
+    ]
+  },
+  {
+    "questionNumber": 25,
+    "questionText": "\nIn The Shawshank Redemption, the protagonist escapes using: \n a) A tunnel \n b) A helicopter \n c) A car",
+    "answers": [
+      {
+        "correctAnswer": "a"
+      }
+    ]
+  }
+]

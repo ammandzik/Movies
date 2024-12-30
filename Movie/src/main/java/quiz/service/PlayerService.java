@@ -13,7 +13,7 @@ public class PlayerService {
     }
 
     private static final String ANSWER_REGEX = "[a-c]";
-    private static final String NAME_REGEX = "[A-Za-z]";
+    private static final String NAME_REGEX = "^[a-zA-Z]+$";
 
 
     public static void countScore(Set<String> correctAnswers, String playerGuess, Player player) {
@@ -32,14 +32,8 @@ public class PlayerService {
 
     }
 
-    public static void setPlayerName(Player player) {
 
-        player.setName(getName());
-
-    }
-
-
-    private static String getName() {
+    public static String saveUserName() {
 
 
         var userAnswer = "";
