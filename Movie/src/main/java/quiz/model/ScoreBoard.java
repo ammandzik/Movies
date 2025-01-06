@@ -10,16 +10,11 @@ public class ScoreBoard {
 
     }
 
-    protected static Map<String, Integer> scoresTable = new TreeMap<>(
+    private static Map<String, Integer> scoresTable = new TreeMap<>(
 
             (player1, player2) -> {
 
-                int compareScore = player1.compareTo(player2);
-
-                if (compareScore == 0) {
-
-                    return player1.compareTo(player2);
-                }
+                int compareScore = player2.compareTo(player1);
 
                 return compareScore;
 
@@ -40,7 +35,7 @@ public class ScoreBoard {
             String player = entry.getKey();
             Integer score = entry.getValue();
 
-            System.out.println("Player name: " + player + " Score: " + score);
+            System.out.println("Player name: " + player + "*** Score: " + score);
         }
     }
 

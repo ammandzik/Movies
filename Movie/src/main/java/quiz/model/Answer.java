@@ -4,7 +4,6 @@ import java.util.Objects;
 
 public record Answer(String correctAnswer) {
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

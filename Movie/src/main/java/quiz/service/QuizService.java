@@ -1,12 +1,14 @@
 package quiz.service;
 
-
 import quiz.model.Answer;
 import quiz.model.Player;
 import quiz.model.Question;
 import quiz.model.Quiz;
 
-import java.util.*;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import static movie.service.Menu.displayMenu;
 import static movie.service.UserService.askForUserInput;
@@ -27,10 +29,11 @@ public class QuizService {
 
     public static void playQuiz() {
 
-        var quiz = new Quiz();
         var player = new Player();
+        var quiz = new Quiz(player);
 
         do {
+
             player.setName(saveUserName());
             displayQuiz(addQuestionsToPool(FILE_PATH), player, quiz);
             displayScore(player, quiz);
@@ -41,39 +44,41 @@ public class QuizService {
 
     }
 
-    public static void displayQuiz(List<Question> questions, Player player, Quiz quiz) {
+    private static void displayQuiz(List<Question> questions, Player player, Quiz quiz) {
 
+        trackPlayersGuessedAnswers(questions, player, quiz);
+        quizOver = true;
+
+    }
+
+    private static void trackPlayersGuessedAnswers(List<Question> questions, Player player, Quiz quiz) {
 
         for (int i = 0; i < questions.size(); i++) {
 
-            Set<String> correctAnswers = new TreeSet<>();
-            Set<String> withoutGuessedAnswers = new HashSet<>();
+            TreeSet<String> correctAnswers = addQuestionsCorrectAnswersToSet(i, questions);
+            TreeSet<String> withoutGuessedAnswers = addQuestionsCorrectAnswersToSet(i, questions);
 
+            System.out.println("*********************************************** \n" +
+                    questions.get(i).getQuestionText());
 
-            addQuestionCorrectAnswersToSet(i, questions, correctAnswers);
-            addQuestionCorrectAnswersToSet(i, questions, withoutGuessedAnswers);
+            getAndCountPointsForCorrectAnswers(quiz, player, correctAnswers, withoutGuessedAnswers);
 
-            System.out.println("***********************************************" +
+        }
+    }
 
-                    questions.get(i).getQuestionText()
+    private static void getAndCountPointsForCorrectAnswers(Quiz quiz, Player player, Set<String> answers, Set<String> withoutGuessedAnswers) {
 
-            );
+        for (int x = 0; x < answers.size(); x++) {
 
+            countMaxOfQuizPoints(quiz);
 
-            for (int x = 0; x < correctAnswers.size(); x++) {
+            var playerGuess = getUserAnswer();
 
-                countMaxOfQuizPoints(quiz);
-                var playerGuess = getUserAnswer();
-                countScore(withoutGuessedAnswers, playerGuess, player);
+            countScore(withoutGuessedAnswers, playerGuess, player);
 
-            }
-
-            System.out.printf("Correct answer/-s %s %n", correctAnswers);
         }
 
-        quizOver = true;
-
-
+        System.out.printf("Correct answer/-s %s %n", answers);
     }
 
     private static void countMaxOfQuizPoints(Quiz quiz) {
@@ -82,8 +87,9 @@ public class QuizService {
 
     }
 
-    private static void addQuestionCorrectAnswersToSet(int n, List<Question> questions, Set<String> correctAnswers) {
+    private static TreeSet<String> addQuestionsCorrectAnswersToSet(int n, List<Question> questions) {
 
+        TreeSet<String> correctAnswers = new TreeSet<>();
 
         List<Answer> answers = questions.get(n).getAnswers();
 
@@ -96,6 +102,8 @@ public class QuizService {
                 correctAnswers.add(answers.get(x).correctAnswer());
             }
         }
+
+        return correctAnswers;
 
     }
 
