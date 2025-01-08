@@ -6,7 +6,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Set;
 
-public class PlayerService {
+class PlayerService {
 
     private PlayerService() {
 
