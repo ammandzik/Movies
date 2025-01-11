@@ -1,5 +1,8 @@
 package movie.model;
 
+/**
+ * Enum representing movie categories.
+ */
 public enum Category {
 
     SCI_FI("Sci-Fi"),
@@ -8,15 +11,12 @@ public enum Category {
 
     final String description;
 
-    public String getDescription(){
-
-        return description;
-
+    Category(String description) {
+        this.description = description;
     }
 
-    Category(String description) {
-
-        this.description = description;
+    public String getDescription(){
+        return description;
     }
 
     @Override

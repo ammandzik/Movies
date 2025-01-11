@@ -1,5 +1,9 @@
 package quiz.model;
 
+/**
+ * Represents a player in the quiz game.
+ * A player has a name and a score that tracks their performance.
+ */
 public class Player {
     private int score;
     private String name;

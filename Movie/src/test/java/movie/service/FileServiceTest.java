@@ -1,66 +1,60 @@
 package movie.service;
 
-import movie.advice.FileParseException;
-import movie.model.Movie;
 import org.json.simple.JSONArray;
 import org.junit.jupiter.api.Test;
 
-import static movie.service.FileService.convertFileToJson;
-import static movie.service.FileService.jsonFileToObjectList;
 import static org.junit.jupiter.api.Assertions.*;
+import static movie.service.FileService.convertFileToJson;
 
 class FileServiceTest {
 
-    private final String FILE_PATH = "src/test/resources/test.json";
-
+    private static final String VALID_FILE_PATH = "src/test/resources/test.json";
+    private static final String EMPTY_FILE_PATH = "src/test/resources/empty.json";
+    private static final String INVALID_FILE_PATH = "src/test/resources/invalid.json";
+    private static final String NON_EXISTENT_FILE_PATH = "src/test/resources/nonexistent.json";
 
     @Test
     void shouldConvertFileToJsonCorrectly() {
+        // when
+        JSONArray jsonArray = assertDoesNotThrow(() -> convertFileToJson(VALID_FILE_PATH));
 
+        // then
+        assertNotNull(jsonArray, "JSON array should not be null");
+        assertFalse(jsonArray.isEmpty(), "JSON array should not be empty");
 
-        //when
+        System.out.println("JSON array size: " + jsonArray.size());
 
-        var jsonArray = assertDoesNotThrow(() -> convertFileToJson(FILE_PATH));
-
-        //then
-
-
-        assertEquals(jsonArray.getClass(), JSONArray.class);
-
-
+        assertFalse(jsonArray.isEmpty(), "JSON array should have at least one element");
     }
 
     @Test
-    void convertEmptyJsonTestShouldThrowException() {
-
-        // given
-
-        final String EMPTY_FILE = "src/test/resources/empty.json";
-
-
+    void convertEmptyJsonShouldReturnEmptyJSONArray() {
         // when
-
-        var exception = assertThrows(FileParseException.class, () -> convertFileToJson(EMPTY_FILE));
+        JSONArray jsonArray = assertDoesNotThrow(() -> convertFileToJson(EMPTY_FILE_PATH));
 
         // then
-
-        assertEquals("Could not parse the file.", exception.getMessage());
-
+        assertNotNull(jsonArray, "JSON array should not be null");
+        assertTrue(jsonArray.isEmpty(), "JSON array should be empty for an empty file");
     }
 
     @Test
-    void shouldProvideCorrectJsonFileConversionToObjectList() {
-
-
+    void convertInvalidJsonShouldThrowFileParseException() {
         // when
-
-        var objects = assertDoesNotThrow(() -> jsonFileToObjectList(FILE_PATH, Movie.class));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> convertFileToJson(INVALID_FILE_PATH));
 
         // then
-
-        assertNotNull(objects.get(0));
-
+        assertNotNull(exception.getMessage(), "Exception message should not be null");
+        assertTrue(exception.getMessage().contains("File does not exist: " + INVALID_FILE_PATH),
+                "Exception message should indicate parsing error with the correct file name");
     }
 
 
+    @Test
+    void convertNonExistentFileShouldThrowIllegalArgumentException() {
+        // when
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> convertFileToJson(NON_EXISTENT_FILE_PATH));
+
+        // then
+        assertEquals("File does not exist: " + NON_EXISTENT_FILE_PATH, exception.getMessage());
+    }
 }

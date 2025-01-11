@@ -1,8 +1,13 @@
 package quiz.model;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+/**
+ * Represents a question in the quiz. Each question contains a question number,
+ * the text of the question, and a list of possible answers.
+ */
 public class Question {
 
     private int questionNumber;
@@ -25,7 +30,7 @@ public class Question {
         this.questionText = questionText;
     }
 
-    public ArrayList<Answer> getAnswers() {
+    public List<Answer> getAnswers() {
         return answers;
     }
 

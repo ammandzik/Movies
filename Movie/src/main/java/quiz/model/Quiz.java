@@ -1,16 +1,18 @@
 package quiz.model;
 
+/**
+ * Represents a quiz in the game. The quiz tracks the player and their maximum points.
+ */
 public class Quiz {
-    public Quiz(Player player) {
-
-        this.player = player;
-    }
 
     private int maxPoints;
     private Player player;
 
-    public int getPoints() {
+    public Quiz(Player player) {
+        this.player = player;
+    }
 
+    public int getPoints() {
         return maxPoints;
     }
 
