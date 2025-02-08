@@ -2,6 +2,9 @@ package quiz.model;
 
 import java.util.Objects;
 
+/**
+ * Represents a correct answer string.
+ */
 public record Answer(String correctAnswer) {
 
     @Override
