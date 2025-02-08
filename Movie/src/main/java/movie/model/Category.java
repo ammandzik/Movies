@@ -8,15 +8,15 @@ public enum Category {
 
     final String description;
 
-    public String getDescription(){
-
-        return description;
-
-    }
-
     Category(String description) {
 
         this.description = description;
+    }
+
+    public String getDescription() {
+
+        return description;
+
     }
 
     @Override

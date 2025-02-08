@@ -16,7 +16,6 @@ public class Data {
 
 
     }
-
     public static Player createPlayer() {
 
         return new Player();

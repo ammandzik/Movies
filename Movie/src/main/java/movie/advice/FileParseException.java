@@ -10,4 +10,9 @@ public class FileParseException extends RuntimeException {
 
         super(format(MSG));
     }
+
+    public FileParseException(String message, Throwable cause) {
+
+        super(message,cause);
+    }
 }

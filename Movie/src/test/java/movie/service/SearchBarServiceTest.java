@@ -14,32 +14,29 @@ class SearchBarServiceTest {
 
     @Test
     void shouldPrintAllFoundTitlesThatContainSearchPhrase() {
-
-        //given
+        // given
         final var PHRASE = "cos";
 
-        //when
+        // when
         List<Movie> movies = assertDoesNotThrow(() -> displaySearchResult(PHRASE, FILE_PATH));
 
-        //then
-        assertFalse(movies.isEmpty());
-
-
+        // then
+        assertFalse(movies.isEmpty(), "Search result should not be empty");
+        for (var movie : movies) {
+            assertTrue(movie.getTitle().toLowerCase().contains(PHRASE.toLowerCase()),
+                    "All movie titles should contain the search phrase");
+        }
     }
 
     @Test
     void shouldPrintErrorMessageWhileSearchResultsAreEmpty() {
-
-        //given
+        // given
         final var PHRASE = "Freepik";
 
-
-        //when
+        // when
         List<Movie> movies = assertDoesNotThrow(() -> displaySearchResult(PHRASE, FILE_PATH));
 
-        //then
-        assertTrue(movies.isEmpty());
-
-
+        // then
+        assertTrue(movies.isEmpty(), "Search result should be empty for non-matching phrase");
     }
 }

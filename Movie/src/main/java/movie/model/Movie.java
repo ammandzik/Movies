@@ -2,6 +2,9 @@ package movie.model;
 
 import java.util.Objects;
 
+/**
+ * Represents a Movie with details such as id, title, category, release date, and rating.
+ */
 public class Movie {
 
     private Long id;

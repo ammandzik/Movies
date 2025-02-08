@@ -6,94 +6,86 @@ import quiz.model.Player;
 
 import java.util.Set;
 
-import static junit.framework.Assert.*;
-
 import static quiz.service.Data.*;
-import static quiz.service.PlayerService.answerCorrect;
-import static quiz.service.PlayerService.countScore;
+import static quiz.service.PlayerService.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerServiceTest {
 
-    Player p1 = createPlayer();
-    static Set<String> correctAnswers = testAnswers;
+    Player p1;
+    Set<String> correctAnswers;
 
     @BeforeEach
-    public void fillSetWithAnswers(){
-
+    public void setUp() {
+        p1 = createPlayer();
+        correctAnswers = testAnswers;
         fillSet();
     }
 
-
     @Test
     void checkForCorrectAnswersTest() {
-
-
-        assertTrue(answerCorrect(correctAnswers, "a"));
-        assertTrue(answerCorrect(correctAnswers, "c"));
-
-
+        // when & then
+        assertTrue(isAnswerCorrect(correctAnswers, "a"), "Answer 'a' should be correct");
+        assertTrue(isAnswerCorrect(correctAnswers, "c"), "Answer 'c' should be correct");
     }
 
     @Test
     void checkForIncorrectAnswersTest() {
-
-
-        assertFalse(answerCorrect(correctAnswers, "b"));
-        assertFalse(answerCorrect(correctAnswers, "d"));
-
-
+        // when & then
+        assertFalse(isAnswerCorrect(correctAnswers, "b"), "Answer 'b' should be incorrect");
+        assertFalse(isAnswerCorrect(correctAnswers, "d"), "Answer 'd' should be incorrect");
     }
 
     @Test
     void checkForDuplicatedAnswersTest() {
-
-
-        //when
+        // when
         countScore(correctAnswers, "a", p1);
         countScore(correctAnswers, "a", p1);
 
-        //then
-        assertEquals(1, p1.getScore());
-
-
+        // then
+        assertEquals(1, p1.getScore(), "Score should not increment for duplicated answers");
     }
 
     @Test
     void incrementScoreWhenCorrectAnswerTest() {
-
-
-        //when
+        // when
         countScore(correctAnswers, "a", p1);
         countScore(correctAnswers, "c", p1);
 
-        //then
-        assertEquals(2, p1.getScore());
-
-
+        // then
+        assertEquals(2, p1.getScore(), "Score should increment for each correct answer");
     }
 
     @Test
     void doNotIncrementScoreWhenIncorrectAnswerTest() {
-
-        //when
+        // when
         countScore(correctAnswers, "b", p1);
         countScore(correctAnswers, "d", p1);
 
-        //then
-        assertEquals(0, p1.getScore());
+        // then
+        assertEquals(0, p1.getScore(), "Score should not increment for incorrect answers");
+    }
 
+    @Test
+    void answerCorrectlyRemovedFromSetTest() {
+        // when
+        boolean isCorrect = isAnswerCorrect(correctAnswers, "c");
+
+        // then
+        assertTrue(isCorrect, "Correct answer 'c' should be removed from the set");
+        assertFalse(correctAnswers.contains("c"), "Set should no longer contain the answer 'c'");
 
     }
 
     @Test
-    void answerCorrectlyRemovedFromSetTest(){
+    void answerCorrectlyNotRemovedFromSetTest() {
+        // when
+        boolean isCorrect = isAnswerCorrect(correctAnswers, "b");
 
-        assertTrue(answerCorrect(correctAnswers, "c"));
+        // then
+        assertFalse(isCorrect, "Incorrect answer 'b' should not be marked as correct");
+
     }
 
-    @Test
-    void answerCorrectlyNotRemovedFromSetTest(){
 
-        assertFalse(answerCorrect(correctAnswers, "b"));
-    }
 }
